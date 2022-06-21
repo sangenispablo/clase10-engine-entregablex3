@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head.ejs') %>
+  <body>
+    <header><%- include('includes/navigation.ejs') %></header>
+
+    <!-- Main content -->
+    <main>
+      <section class="py-2 text-center container">
+        <div class="row py-lg-1">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <% if (productos.length > 0) { %>
+            <h1 class="fw-light">Listado de Productos</h1>
+            <% } else { %>
+            <h1 class="fw-light">Listado sin Productos</h1>
+            <% } %>
+          </div>
+        </div>
+      </section>
+
+      <% if (productos.length > 0) { %>
+      <div class="container py-2 bg-light">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Imagen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% productos.forEach(producto => { %>
+              <tr>
+                <th scope="row"><%= producto.id %></th>
+                <td><%= producto.title %></td>
+                <td>$ <%= producto.price %></td>
+                <td><img src=<%= producto.thumbnail %> /></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <% } %>
+    </main>
+
+    <%- include('includes/end.ejs') %>
+  </body>
+</html>
