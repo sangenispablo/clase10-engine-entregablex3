@@ -1,0 +1,29 @@
+extends layouts/main-layout.pug
+
+block content
+    section.py-3.text-center.container
+        div.row.py-lg-1
+            div.col-lg-6.col-md-8.mx-auto
+                if productos.length > 0
+                    h1.fw-light Listado de Productos
+                else
+                    h1.fw-light Sin Productos
+
+        if productos.length > 0
+            div.py-2.bg-light
+                div.table-responsive
+                    table.table
+                        thead
+                            tr
+                                th(scope="col") #
+                                th(scope="col") Nombre
+                                th(scope="col") Precio
+                                th(scope="col") Imagen
+                        tbody
+                            each producto in productos
+                                tr
+                                    th(scope="row") #{producto.id}
+                                    td #{producto.title}
+                                    td #{producto.price}
+                                    td
+                                        img(src=`${producto.thumbnail}`, alt="img1")
